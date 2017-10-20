@@ -9,46 +9,46 @@
 void Msort(int A[],int TmpArray[],int left,int right)
 {
 	int center;
-	
+
 	if(left < right){
-		
-		
+
 		center = (left+right)/2;
-		Mosrt(A,TmpArray,left,center)
-		Msort(A,TmpArray,center+1,right)
-		Merge(A,TmpArray,left,center+1,right)
+		Msort(A,TmpArray,left,center);
+		Msort(A,TmpArray,center+1,right);
+		Merge(A,TmpArray,left,center+1,right);
+
 	}
-	
-	
+
+
 }
 
 void MergeSort(int A[],int N)
 {
-	
+
 	int *TmpArray;
-	
-	TmpArray = malloc(n*sizeof(int))
-	if(TmpArray != null)
+
+	TmpArray = malloc(N*sizeof(int));
+	if(TmpArray != NULL)
 	{
-		
-		Msort(A,TmpArray,0,N-1)
-		free(TmpArray)
+
+		Msort(A,TmpArray,0,N-1);
+		free(TmpArray);
 	}else{
-		
-		printf("NO space fot tmp array！！！")
+
+		printf("NO space fot tmp array！！！");
 	}
-	
+
 }
 
-//lpos = start of left half ,rpos = start of right half  
+//lpos = start of left half ,rpos = start of right half
 void Merge(int A[],int TmpArray[],int lpos,int rpos,int rightend)
 {
 	int i,leftend,numelements,Tmpos;
 
 	leftend = rpos -1;
 	Tmpos = lpos;
-	numelements = rightend - left+1;
-	
+	numelements = rightend - lpos + 1;
+
 	//main loop
 	while(lpos <= leftend && rpos <= rightend)
 	{
@@ -56,10 +56,10 @@ void Merge(int A[],int TmpArray[],int lpos,int rpos,int rightend)
 		{
 			TmpArray[Tmpos++] = A[lpos++];
 		}else{
-			
+
 			TmpArray[Tmpos++] = A[rpos++];
 		}
-		
+
 	}
 	//把剩下的元素放入输入临时数组
 	while(lpos <= leftend)
@@ -70,11 +70,11 @@ void Merge(int A[],int TmpArray[],int lpos,int rpos,int rightend)
 	{
 		TmpArray[Tmpos++] = A[rpos++];
 	}
-	
+
 	//copy TmpArray back
 	for(i = 0;i<numelements;i++,rightend--)
 	{
-		A[rightend] = TmpArray[rightend]
-		
+		A[rightend] = TmpArray[rightend];
+
 	}
 }
